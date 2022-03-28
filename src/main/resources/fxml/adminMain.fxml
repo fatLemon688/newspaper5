@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bigotry.controller.AdminMainController">
+   <children>
+      <HBox prefHeight="757.0" prefWidth="1280.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="72.0" prefWidth="1280.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="659.0" prefWidth="1221.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="1181.0">
+                           <children>
+                              <AnchorPane prefHeight="50.0" prefWidth="1281.0">
+                                 <children>
+                                    <Button fx:id="btnMin" layoutX="1130.0" layoutY="-6.0" maxHeight="35.0" maxWidth="30.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="30.0" />
+                                    <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text layoutX="83.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="尊敬的管理员">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="adminName" layoutX="227.0" layoutY="12.0" prefHeight="27.0" prefWidth="435.0" text="Label">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="btnClose" layoutX="1191.0" layoutY="-1.0" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                        <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="43.0" prefWidth="1181.0">
+                           <children>
+                              <AnchorPane prefHeight="30.0" prefWidth="1179.0">
+                                 <children>
+                                    <MenuBar layoutY="-1.0" prefHeight="32.0" prefWidth="1280.0">
+                                       <menus>
+                                          <Menu mnemonicParsing="false" text="退出登录">
+                                             <items>
+                                                <MenuItem fx:id="itemLogout" mnemonicParsing="false" onAction="#handleLogout" text="退出登录" />
+                                             </items>
+                                          </Menu>
+                                          <Menu mnemonicParsing="false" text="录入新信息">
+                                             <items>
+                                                <MenuItem fx:id="itemEnterUserInfo" mnemonicParsing="false" onAction="#handleEnterUserInfo" text="录入用户信息" />
+                                                <MenuItem fx:id="itemEnterPaperInfo" mnemonicParsing="false" onAction="#handleEnterPaperInfo" text="录入新报刊" />
+                                             </items>
+                                          </Menu>
+                                          <Menu mnemonicParsing="false" text="查询基本信息">
+                                             <items>
+                                                <MenuItem fx:id="itemQueryInfoByPerson" mnemonicParsing="false" onAction="#handleQueryInfoByPerson" text="按人员查询" />
+                                                <MenuItem fx:id="itemQueryInfoByPaper" mnemonicParsing="false" onAction="#handleQueryInfoByPaper" text="按报刊查询" />
+                                                <MenuItem fx:id="itemQueryInfoByDept" mnemonicParsing="false" onAction="#handleQueryInfoByDept" text="按部门查询" />
+                                             </items>
+                                          </Menu>
+                                          <Menu mnemonicParsing="false" text="查询订阅情况">
+                                            <items>
+                                              <MenuItem fx:id="itemQuerySubScriptedByUser" mnemonicParsing="false" onAction="#handleQuerySubScriptedByUser" text="按用户查询" />
+                                                <MenuItem fx:id="itemQuerySubScriptedByPaper" mnemonicParsing="false" onAction="#handleQuerySubScriptedByPaper" text="按报刊查询" />
+                                                <MenuItem fx:id="itemQuerySubScriptedByDept" mnemonicParsing="false" onAction="#handleQuerySubScriptedByDept" text="按部门查询" />
+                                            </items>
+                                          </Menu>
+                                       </menus>
+                                    </MenuBar>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="724.0" prefWidth="1218.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <VBox prefHeight="724.0" prefWidth="611.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <HBox prefHeight="724.0" prefWidth="288.0">
+                                       <children>
+                                          <ScrollPane prefHeight="607.0" prefWidth="288.0" HBox.hgrow="ALWAYS">
+                                             <content>
+                                                <ListView fx:id="listView" prefHeight="677.0" prefWidth="322.0" />
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="724.0" prefWidth="1214.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <HBox prefHeight="556.0" prefWidth="891.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <TextArea fx:id="content" editable="false" prefHeight="487.0" prefWidth="891.0" HBox.hgrow="ALWAYS" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children></HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

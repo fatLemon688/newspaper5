@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bigotry.controller.LoginController">
+   <children>
+      <ImageView fitHeight="209.0" fitWidth="472.0" pickOnBounds="true" preserveRatio="true" fx:id="arrowImg"/>
+      <AnchorPane layoutY="201.0" prefHeight="249.0" prefWidth="472.0">
+         <children>
+            <ImageView fitHeight="242.0" fitWidth="472.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" fx:id="arrow2Img">
+            </ImageView>
+            <Label contentDisplay="CENTER" layoutX="7.0" layoutY="215.0" onMouseClicked="#handleSignUpAction" prefHeight="20.0" prefWidth="262.0" text="没有账号？点击注册" underline="true" />
+            <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="84.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" fx:id="userLoginImg">
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="84.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true" fx:id="passwordImg">
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="121.0" layoutY="185.0" prefHeight="231.0" prefWidth="255.0">
+         <children>
+            <TextField fx:id="txtUserId" layoutX="1.0" layoutY="33.0" prefHeight="34.0" prefWidth="252.0" promptText="请输入用户名" />
+            <PasswordField fx:id="txtPasswordField" layoutX="-2.0" layoutY="100.0" prefHeight="31.0" prefWidth="252.0" promptText="请输入密码" />
+            <HBox layoutX="16.0" layoutY="162.0" prefHeight="26.0" prefWidth="174.0" />
+            <Button fx:id="btnLogin" layoutX="1.0" layoutY="196.0" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="30.0" prefWidth="252.0" style="-fx-background-color: #5288f4;" text="登录" />
+            <CheckBox fx:id="rememberCheck" layoutX="1.0" layoutY="146.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="252.0" selected="true" text="记住密码" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="btnAdminLogin" layoutX="190.0" layoutY="-1.0" mnemonicParsing="false" onAction="#handleGoTOAdminLogin" prefHeight="41.0" prefWidth="117.0" style="-fx-background-color: #5288f4;" text="管理员登录" />
+      <Button fx:id="btnClose" layoutX="428.0" layoutY="-1.0" maxHeight="14.0" maxWidth="30.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="30.0" />
+      <Button fx:id="btnMin" layoutX="385.0" layoutY="-1.0" maxHeight="35.0" maxWidth="30.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="30.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="41.0" fitWidth="42.0" layoutX="149.0" pickOnBounds="true" preserveRatio="true" fx:id="adminLoginImg">
+      </ImageView>
+   </children>
+</AnchorPane>

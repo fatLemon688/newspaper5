@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.bigotry.mapper.queryMapper">
+    <resultMap id="paperOrderResultMap" type="com.bigotry.pojo.NewsPaper">
+        <id column="codeName" jdbcType="VARCHAR" property="codeName"/>
+        <result column="paperName" jdbcType="VARCHAR" property="paperName" />
+        <result column="pubOffice" jdbcType="VARCHAR" property="pubOffice" />
+        <result column="pubPeriod" jdbcType="INTEGER" property="pubPeriod" />
+        <result column="ssonPrice" jdbcType="INTEGER" property="ssonPrice" />
+        <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+        <result column="sortNo" jdbcType="VARCHAR" property="sortNo" />
+        <association property="tbOrder" javaType="com.bigotry.pojo.TbOrder">
+            <id column="orderNo" property="orderNo" jdbcType="VARCHAR"/>
+            <result column="userId" property="userId" jdbcType="VARCHAR"/>
+            <result column="codeName" property="codeName" jdbcType="VARCHAR"/>
+            <result column="subscriptNo" property="subscriptNo" jdbcType="INTEGER"/>
+            <result column="subscriptMonth" property="subscriptMonth" jdbcType="INTEGER"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="OrderPaperResultMap" type="com.bigotry.pojo.TbOrder">
+        <id column="orderNo" property="orderNo" jdbcType="VARCHAR"/>
+        <result column="userId" property="userId" jdbcType="VARCHAR"/>
+        <result column="codeName" property="codeName" jdbcType="VARCHAR"/>
+        <result column="subscriptNo" property="subscriptNo" jdbcType="INTEGER"/>
+        <result column="subscriptMonth" property="subscriptMonth" jdbcType="INTEGER"/>
+        <result column="totalPrice" property="totalPrice" jdbcType="INTEGER"/>
+        <association property="paper" javaType="com.bigotry.pojo.NewsPaper">
+            <id column="codeName" jdbcType="VARCHAR" property="codeName"/>
+            <result column="paperName" jdbcType="VARCHAR" property="paperName" />
+            <result column="pubOffice" jdbcType="VARCHAR" property="pubOffice" />
+            <result column="pubPeriod" jdbcType="INTEGER" property="pubPeriod" />
+            <result column="ssonPrice" jdbcType="INTEGER" property="ssonPrice" />
+            <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+            <result column="sortNo" jdbcType="VARCHAR" property="sortNo" />
+        </association>
+    </resultMap>
+    <resultMap id="userOrderResultMap" type="com.bigotry.pojo.User">
+        <id column="userId" property="userId" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="IDCard" property="IDCard" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="deptNo" property="deptNo" jdbcType="INTEGER"/>
+        <association  property="tbOrder" javaType="com.bigotry.pojo.TbOrder">
+            <id column="orderNo" property="orderNo" jdbcType="VARCHAR" />
+            <result column="userId" property="userId"  jdbcType="VARCHAR"/>
+            <result column="codeName" property="codeName"  jdbcType="VARCHAR" />
+            <result column="subscriptNo" property="subscriptNo"  jdbcType="INTEGER"/>
+            <result column="subscriptMonth" property="subscriptMonth" jdbcType="INTEGER" />
+            <result column="totalPrice"  property="totalPrice" jdbcType="INTEGER"/>
+        </association>
+    </resultMap>
+    <select id="queryAdminLoginInfo" resultType="com.bigotry.pojo.AdminUser" >
+        SELECT
+        *
+        from adminuser
+        <where>
+            <if test="adminName != null or adminName != ''">
+                and adminName = #{adminName}
+            </if>
+            <if test="password != null or password != ''">
+                and password = #{password}
+            </if>
+        </where>
+    </select>
+    <select id="queryUserInfo" resultType="com.bigotry.pojo.User" >
+        SELECT
+        *
+        from users
+        <where>
+            <if test="userId != null or userId != ''">
+                userId = #{userId}
+            </if>
+            <if test="password != null or password != ''">
+                and password = #{password}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryUserInfoById" resultType="com.bigotry.pojo.User" >
+        SELECT
+        *
+        from users
+        <where>
+            <if test="userId != null or userId != ''">
+                userId = #{userId}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateUser" parameterType="com.bigotry.pojo.User" >
+        UPDATE users set password=#{password},name=#{name},IDCard=#{IDCard},
+        phone=#{phone},address=#{address},deptNo=#{deptNo}
+        <where>
+            <if test="userId != null or userId != ''">
+                userId = #{userId}
+            </if>
+        </where>
+    </update>
+    <insert id="insertIntoUser" parameterType="User" >
+        INSERT into users(userId,password,name,IDCard,phone,address,deptNo)
+        values(#{userId},#{password},#{name},#{IDCard},#{phone},#{address},#{deptNo})
+    </insert>
+
+    <insert id="insertIntoNewsPaper" parameterType="com.bigotry.pojo.NewsPaper">
+        INSERT into newspaper(codeName,paperName,pubOffice,pubPeriod,ssonPrice,introduction,sortNo)
+        values(#{codeName},#{paperName},#{pubOffice},#{pubPeriod},#{ssonPrice},#{introduction},#{sortNo})
+    </insert>
+
+    <select id="queryALLNewsPaper" resultType="com.bigotry.pojo.NewsPaper">
+        SELECT * from newspaper
+    </select>
+
+    <select id="queryAllUser" resultType="com.bigotry.pojo.User">
+        SELECT * from users
+    </select>
+
+
+
+    <insert id="SubScriptPaper" parameterType="TbOrder">
+        INSERT into TbOrder(orderNo,userId,codeName,subscriptNo,subscriptMonth,totalPrice)
+        values(#{orderNo},#{userId},#{codeName},#{subscriptNo},#{subscriptMonth},#{totalPrice})
+    </insert>
+
+    <select id="queryNewsPaperByName" parameterType="java.lang.String" resultType="com.bigotry.pojo.NewsPaper">
+        SELECT * from newspaper
+        <where>
+            <if test="paperName != null or paperName != ''">
+                paperName = #{paperName}
+            </if>
+        </where>
+    </select>
+
+    <select id="isSubScripted" resultType="java.lang.Boolean">
+        SELECT count(1) from TbOrder
+        <where>
+            <if test="userId != null or userId != ''">
+                userId = #{userId}
+            </if>
+            <if test="codeName != null or codeName != ''">
+                and codeName = #{codeName}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryAllOrder" resultType="com.bigotry.pojo.TbOrder">
+        SELECT * from TbOrder
+    </select>
+
+    <select id="queryAllOrderByUserId" parameterType="java.lang.String" resultType="com.bigotry.pojo.TbOrder">
+        SELECT * from TbOrder
+        <where>
+            <if test="userId != null or userId != ''">
+                userId = #{userId}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryOrderByOrderNo" resultType="com.bigotry.pojo.TbOrder">
+        SELECT * from TbOrder
+        <where>
+            <if test="orderNo != null or orderNo != ''">
+                orderNo = #{orderNo}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryPaperNameByOrderNo" parameterType="java.lang.String" resultMap="paperOrderResultMap">
+        SELECT paperName from newspaper
+        LEFT JOIN TbOrder
+        on newspaper.codeName=TbOrder.codeName
+        <where>
+            <if test="orderNo != null or orderNo != ''">
+                orderNo = #{orderNo}
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteOrderByOrderNo" >
+        DELETE from TbOrder
+        <where>
+            <if test="orderNo != null or orderNo != ''">
+                orderNo = #{orderNo}
+            </if>
+        </where>
+    </delete>
+    <select id="queryNewsPaperByCodeName" resultType="java.lang.String">
+        SELECT paperName from newsPaper
+        <where>
+            <if test="codeName != null or codeName != ''">
+                codeName = #{codeName}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryPaperByCodeName" resultType="com.bigotry.pojo.NewsPaper">
+        SELECT * from newsPaper
+        <where>
+            <if test="codeName != null or codeName != ''">
+                codeName = #{codeName}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryAllDepartment" resultType="com.bigotry.pojo.Department">
+        select * from department
+    </select>
+
+    <select id="queryAllUserByDeptNo" parameterType="java.lang.String" resultType="com.bigotry.pojo.User">
+        select * from users
+        <where>
+            <if test="deptNo != null or deptNo != ''">
+                deptNo=#{deptNo}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryDeptByDeptNo" resultType="com.bigotry.pojo.Department">
+        select * from department
+        <where>
+            <if test="deptNo != null or deptNo != ''">
+                deptNo=#{deptNo}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryDeptByDeptName" parameterType="java.lang.String" resultType="com.bigotry.pojo.Department">
+        SELECT * from department
+        <where>
+            <if test="deptName != null or deptName != ''">
+                deptName=#{deptName}
+            </if>
+        </where>
+    </select>
+
+    <select id="querySubScriptedUser" resultMap="userOrderResultMap">
+        SELECT u.userId,u.password,u.name,u.IDCard,u.phone,u.address,u.deptNo
+        from users u,TbOrder t where u.userId=t.userId
+    </select>
+
+    <select id="querySubScriptedNewsPaperByUserId" parameterType="java.lang.String" resultMap="paperOrderResultMap">
+        SELECT n.*
+        from newspaper n
+        LEFT JOIN TbOrder t
+        on n.codeName=t.codeName
+        <where>
+            <if test="userId != null or userId != ''">
+                t.userId = #{userId}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryAllOrderByPaperName" parameterType="java.lang.String" resultMap="OrderPaperResultMap">
+        SELECT t.* from TbOrder t
+        LEFT JOIN newspaper n on t.codeName=n.codeName
+        <where>
+            <if test="paperName != null or paperName != ''">
+                n.paperName = #{paperName}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryCodeNameByDeptNo" parameterType="java.lang.String" resultType="com.bigotry.pojo.TbOrder">
+        SELECT t.*  from TbOrder t
+        where t.userId in (SELECT userId from users
+        <where>
+            <if test="deptNo != null or deptNo != ''">
+                deptNo = #{deptNo}
+            </if>
+        </where>)
+    </select>
+
+    <select id="queryDeptNoIsExist" parameterType="java.lang.Integer" resultType="java.lang.Boolean">
+        SELECT count(1) from department
+        <where>
+            <if test="deptNo != null or deptNo != ''">
+                deptNo = #{deptNo}
+            </if>
+        </where>
+    </select>
+
+    <select id="querySortNoIsExist" parameterType="java.lang.Integer" resultType="java.lang.Boolean">
+        SELECT count(1) from newspaperclass
+        <where>
+            <if test="sortNo != null or sortNo != ''">
+                sortNo = #{sortNo}
+            </if>
+        </where>
+    </select>
+
+    <delete id="deletePaperByPaperName" parameterType="java.lang.String">
+        DELETE from newspaper
+        <where>
+            <if test="paperName != null or paperName != ''">
+                paperName = #{paperName}
+            </if>
+        </where>
+    </delete>
+
+    <update id="updatePaper" parameterType="com.bigotry.pojo.NewsPaper" >
+        UPDATE newspaper set paperName=#{paperName},pubOffice=#{pubOffice},
+        pubPeriod=#{pubPeriod},ssonPrice=#{ssonPrice},introduction=#{introduction},sortNo=#{sortNo}
+        <where>
+            <if test="codeName != null or codeName != ''">
+                codeName = #{codeName}
+            </if>
+        </where>
+    </update>
+</mapper>

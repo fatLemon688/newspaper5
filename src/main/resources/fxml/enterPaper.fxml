@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="589.0" prefWidth="965.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.ModifyProfile">
+   <children>
+      <TextArea fx:id="paperContent" layoutX="382.0" layoutY="82.0" prefHeight="414.0" prefWidth="584.0" promptText="请输入报刊简介......" />
+      <Label layoutX="30.0" layoutY="47.0" prefHeight="32.0" prefWidth="105.0" text="报刊代号:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="117.0" prefHeight="32.0" prefWidth="120.0" text="报刊名称：">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="58.0" layoutY="187.0" prefHeight="32.0" prefWidth="120.0" text="出版社：">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="257.0" prefHeight="32.0" prefWidth="120.0" text="出版周期：">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="327.0" prefHeight="32.0" prefWidth="120.0" text="季度报价：">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="397.0" prefHeight="32.0" prefWidth="120.0" text="分类编号：">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnSummit" layoutX="363.0" layoutY="535.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="286.0" text="提交">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Separator layoutX="36.0" layoutY="512.0" prefHeight="0.0" prefWidth="891.0" />
+      <Label layoutX="382.0" layoutY="47.0" prefHeight="32.0" prefWidth="105.0" text="内容介绍:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldCodeName" layoutX="147.0" layoutY="47.0" prefHeight="32.0" prefWidth="200.0" promptText="请输入报刊代号..." />
+      <TextField fx:id="textFieldPaperName" layoutX="147.0" layoutY="117.0" prefHeight="32.0" prefWidth="200.0" promptText="请输入报刊名称..." />
+      <TextField fx:id="textFieldPubOffice" layoutX="147.0" layoutY="187.0" prefHeight="32.0" prefWidth="200.0" promptText="请输入出版社..." />
+      <TextField fx:id="textFieldPubPeriod" layoutX="147.0" layoutY="257.0" prefHeight="32.0" prefWidth="200.0" promptText="请输入出版周期..." />
+      <TextField fx:id="textFieldSsonPrice" layoutX="147.0" layoutY="327.0" prefHeight="32.0" prefWidth="200.0" promptText="请输入季度报价..." />
+      <TextField fx:id="textFieldSortNo" layoutX="147.0" layoutY="397.0" prefHeight="32.0" prefWidth="200.0" promptText="请输入分类编号..." />
+   </children>
+</AnchorPane>

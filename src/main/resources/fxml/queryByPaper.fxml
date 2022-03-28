@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="1179.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bigotry.controller.QueryByPaperController">
+   <children>
+      <HBox prefHeight="757.0" prefWidth="1280.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox prefHeight="72.0" prefWidth="1280.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="659.0" prefWidth="1221.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane prefHeight="51.0" prefWidth="1188.0" style="-fx-background-color: #e7dcbc;">
+                                 <children>
+                                    <Text layoutX="75.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="尊敬的管理员:">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="adminName" layoutX="221.0" layoutY="22.0" prefHeight="29.0" prefWidth="451.0" text="Label">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="50.0" fitWidth="60.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true" fx:id="adminMainImg">
+                                    </ImageView>
+                                    <Button fx:id="btnClose" layoutX="1132.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+                                    <Button fx:id="btnMin" layoutX="1085.0" layoutY="-2.0" maxHeight="35.0" maxWidth="30.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="30.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="36.0" prefWidth="1215.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <MenuBar prefHeight="33.0" prefWidth="1010.0" style="-fx-background-color: #e7dcbc;" HBox.hgrow="ALWAYS">
+                                 <menus>
+                                    <Menu mnemonicParsing="false" text="退出登录">
+                                       <items>
+                                          <MenuItem fx:id="itemLogout" mnemonicParsing="false" onAction="#handleLogout" text="退出登录" />
+                                       </items>
+                                    </Menu>
+                                    <Menu mnemonicParsing="false" text="录入新信息">
+                                       <items>
+                                          <MenuItem fx:id="itemEnterUserInfo" mnemonicParsing="false" onAction="#handleEnterUserInfo" text="录入用户信息" />
+                                          <MenuItem fx:id="itemEnterPaperInfo" mnemonicParsing="false" onAction="#handleEnterPaperInfo" text="录入新报刊" />
+                                       </items>
+                                    </Menu>
+                                    <Menu mnemonicParsing="false" text="查询基本信息">
+                                       <items>
+                                          <MenuItem fx:id="itemQueryInfoByPerson" mnemonicParsing="false" onAction="#handleQueryInfoByPerson" text="按人员查询" />
+                                          <MenuItem fx:id="itemQueryInfoByPaper" mnemonicParsing="false" onAction="#handleQueryInfoByPaper" text="按报刊查询" />
+                                          <MenuItem fx:id="itemQueryInfoByDept" mnemonicParsing="false" onAction="#handleQueryInfoByDept" text="按部门查询" />
+                                       </items>
+                                    </Menu>
+                                    <Menu mnemonicParsing="false" text="查询订阅情况">
+                                      <items>
+                                        <MenuItem fx:id="itemQuerySubScriptedByUser" mnemonicParsing="false" onAction="#handleQuerySubScriptedByUser" text="按用户查询" />
+                                          <MenuItem fx:id="itemQuerySubScriptedByPaper" mnemonicParsing="false" onAction="#handleQuerySubScriptedByPaper" text="按报刊查询" />
+                                          <MenuItem fx:id="itemQuerySubScriptedByDept" mnemonicParsing="false" onAction="#handleQuerySubScriptedByDept" text="按部门查询" />
+                                      </items>
+                                    </Menu>
+                                 </menus>
+                              </MenuBar>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="724.0" prefWidth="1218.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <VBox prefHeight="759.0" prefWidth="0.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <HBox prefHeight="774.0" prefWidth="270.0">
+                                       <children>
+                                          <ScrollPane prefHeight="750.0" prefWidth="270.0">
+                                             <content>
+                                                <ListView fx:id="listView" prefHeight="760.0" prefWidth="268.0" />
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="720.0" prefWidth="646.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <HBox prefHeight="363.0" prefWidth="756.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Pane prefHeight="322.0" prefWidth="898.0">
+                                             <children>
+                                                <Button fx:id="btnDeletePaper" layoutX="720.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleDeletePaper" style="-fx-background-color: #e7dcbc;" text="删除报刊" />
+                                                <Label layoutX="14.0" layoutY="260.0" text="内容介绍：">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="labelCodeName" layoutX="134.0" layoutY="3.0" prefHeight="32.0" prefWidth="310.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="labelSsonPrice" layoutX="134.0" layoutY="167.0" prefHeight="32.0" prefWidth="301.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="labelPaperName" layoutX="134.0" layoutY="44.0" prefHeight="32.0" prefWidth="327.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="14.0" layoutY="167.0" text="季度报价：">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="labelSortNo" layoutX="134.0" layoutY="211.0" prefHeight="32.0" prefWidth="301.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="38.0" layoutY="84.0" text="出版社：">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="labelPubPeriod" layoutX="134.0" layoutY="122.0" prefHeight="37.0" prefWidth="310.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="14.0" layoutY="44.0" text="报刊名称：">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="labelPubOffice" layoutX="137.0" layoutY="81.0" prefHeight="37.0" prefWidth="310.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="14.0" prefHeight="37.0" prefWidth="120.0" text="报刊代号:">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="14.0" layoutY="124.0" text="出版周期：">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="14.0" layoutY="211.0" text="分类编号：">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button fx:id="btnModifyPaper" layoutX="720.0" layoutY="45.0" mnemonicParsing="false" onAction="#handleModifyPaper" onMouseClicked="#handleModifyPaper" style="-fx-background-color: #e7dcbc;" text="修改报刊" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="389.0" prefWidth="534.0">
+                                       <children>
+                                          <TextArea fx:id="paperContent" editable="false" prefHeight="373.0" prefWidth="848.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children></HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

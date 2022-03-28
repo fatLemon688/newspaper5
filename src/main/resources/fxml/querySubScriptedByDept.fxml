@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bigotry.controller.QuerySubScriptedByDeptController">
+   <children>
+      <HBox prefHeight="757.0" prefWidth="1280.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox prefHeight="72.0" prefWidth="1280.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="659.0" prefWidth="1221.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane prefHeight="60.0" prefWidth="900.0" style="-fx-background-color: #e7dcbc;">
+                                 <children>
+                                    <Text layoutX="68.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="尊敬的管理员:">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="adminName" layoutX="219.0" layoutY="26.0" prefHeight="29.0" prefWidth="480.0" text="Label">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" fx:id="adminMainImg">
+                                    </ImageView>
+                                    <Button fx:id="btnClose" layoutX="850.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+                                    <Button fx:id="btnMin" layoutX="802.0" layoutY="-3.0" maxHeight="35.0" maxWidth="30.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="30.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="36.0" prefWidth="1215.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <MenuBar prefHeight="35.0" prefWidth="1179.0" style="-fx-background-color: #e7dcbc;" HBox.hgrow="ALWAYS">
+                                 <menus>
+                                    <Menu mnemonicParsing="false" text="退出登录">
+                                       <items>
+                                          <MenuItem fx:id="itemLogout" mnemonicParsing="false" onAction="#handleLogout" text="退出登录" />
+                                       </items>
+                                    </Menu>
+                                    <Menu mnemonicParsing="false" text="录入新信息">
+                                       <items>
+                                          <MenuItem fx:id="itemEnterUserInfo" mnemonicParsing="false" onAction="#handleEnterUserInfo" text="录入用户信息" />
+                                          <MenuItem fx:id="itemEnterPaperInfo" mnemonicParsing="false" onAction="#handleEnterPaperInfo" text="录入新报刊" />
+                                       </items>
+                                    </Menu>
+                                    <Menu mnemonicParsing="false" text="查询基本信息">
+                                       <items>
+                                          <MenuItem fx:id="itemQueryInfoByPerson" mnemonicParsing="false" onAction="#handleQueryInfoByPerson" text="按人员查询" />
+                                          <MenuItem fx:id="itemQueryInfoByPaper" mnemonicParsing="false" onAction="#handleQueryInfoByPaper" text="按报刊查询" />
+                                          <MenuItem fx:id="itemQueryInfoByDept" mnemonicParsing="false" onAction="#handleQueryInfoByDept" text="按部门查询" />
+                                       </items>
+                                    </Menu>
+                                    <Menu mnemonicParsing="false" text="查询订阅情况">
+                                      <items>
+                                        <MenuItem fx:id="itemQuerySubScriptedByUser" mnemonicParsing="false" onAction="#handleQuerySubScriptedByUser" text="按用户查询" />
+                                          <MenuItem fx:id="itemQuerySubScriptedByPaper" mnemonicParsing="false" onAction="#handleQuerySubScriptedByPaper" text="按报刊查询" />
+                                          <MenuItem fx:id="itemQuerySubScriptedByDept" mnemonicParsing="false" onAction="#handleQuerySubScriptedByDept" text="按部门查询" />
+                                      </items>
+                                    </Menu>
+                                 </menus>
+                              </MenuBar>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="724.0" prefWidth="1218.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <VBox prefHeight="724.0" prefWidth="272.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <HBox prefHeight="62.0" prefWidth="284.0">
+                                       <children>
+                                          <Label prefHeight="31.0" prefWidth="143.0" text="部门列表：">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font></Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="724.0" prefWidth="288.0">
+                                       <children>
+                                          <ScrollPane prefHeight="607.0" prefWidth="288.0">
+                                             <content>
+                                                <ListView fx:id="deptListView" prefHeight="642.0" prefWidth="224.0" />
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="724.0" prefWidth="326.0">
+                                 <children>
+                                    <HBox prefHeight="32.0" prefWidth="344.0">
+                                       <children>
+                                          <Label prefHeight="32.0" prefWidth="200.0" text="该部门的订单列表：">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font></Label>
+                                       </children>
+                                    </HBox>
+                                    <ScrollPane prefHeight="704.0" prefWidth="238.0">
+                                       <content>
+                                          <ListView fx:id="orderListView" prefHeight="641.0" prefWidth="280.0" />
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="724.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <HBox prefHeight="724.0" prefWidth="394.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <AnchorPane prefHeight="724.0" prefWidth="349.0">
+                                             <children>
+                                                <Label fx:id="label2" layoutX="14.0" layoutY="111.0" prefHeight="32.0" prefWidth="101.0" text="一共订阅了">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font></Label>
+                                                <Label fx:id="labelDeptName" layoutX="14.0" layoutY="14.0" prefHeight="32.0" prefWidth="345.0">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font></Label>
+                                                <Label fx:id="labelSubNo" layoutX="120.0" layoutY="111.0" prefHeight="32.0" prefWidth="48.0">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font></Label>
+                                                <Label fx:id="label3" layoutX="177.0" layoutY="111.0" prefHeight="32.0" prefWidth="55.0" text="份">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font></Label>
+                                                <Label fx:id="label5" layoutX="14.0" layoutY="175.0" prefHeight="32.0" prefWidth="143.0" text="所需金额为(元):">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font></Label>
+                                                <Label fx:id="labelTotalPrice" layoutX="163.0" layoutY="175.0" prefHeight="32.0" prefWidth="48.0">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font></Label>
+                                                <Label fx:id="labelPaperName" layoutX="14.0" layoutY="79.0" prefHeight="32.0" prefWidth="345.0">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="label1" layoutX="14.0" layoutY="46.0" prefHeight="32.0" prefWidth="81.0" text="订阅了">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="label4" layoutX="55.0" layoutY="143.0" prefHeight="32.0" prefWidth="121.0" text="订阅月数为：">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="labelSubMonthNo" layoutX="168.0" layoutY="143.0" prefHeight="32.0" prefWidth="48.0">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="label6" layoutX="4.0" layoutY="207.0" prefHeight="32.0" prefWidth="101.0" text="订阅时间:">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="labelSubTime" layoutX="96.0" layoutY="207.0" prefHeight="32.0" prefWidth="281.0">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children></HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

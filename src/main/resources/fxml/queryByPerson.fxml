@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bigotry.controller.QueryByPersonController">
+   <children>
+      <HBox prefHeight="757.0" prefWidth="1280.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox prefHeight="72.0" prefWidth="1280.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="659.0" prefWidth="1221.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane prefHeight="50.0" prefWidth="1125.0" style="-fx-background-color: #e7dcbc;">
+                                 <children>
+                                    <Label fx:id="adminName" layoutX="197.0" layoutY="14.0" prefHeight="27.0" prefWidth="601.0" text="Label">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Text layoutX="74.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="尊敬管理员:">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fitHeight="50.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" fx:id="adminMainImg">
+                                    </ImageView>
+                                    <Button fx:id="btnClose" layoutX="1076.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+                                    <Button fx:id="btnMin" layoutX="1028.0" layoutY="-2.0" maxHeight="35.0" maxWidth="30.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="30.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="36.0" prefWidth="1215.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <MenuBar prefHeight="35.0" prefWidth="1179.0" style="-fx-background-color: #e7dcbc;" HBox.hgrow="ALWAYS">
+                                 <menus>
+                                    <Menu mnemonicParsing="false" text="退出登录">
+                                       <items>
+                                          <MenuItem fx:id="itemLogout" mnemonicParsing="false" onAction="#handleLogout" text="退出登录" />
+                                       </items>
+                                    </Menu>
+                                    <Menu mnemonicParsing="false" text="录入新信息">
+                                       <items>
+                                          <MenuItem fx:id="itemEnterUserInfo" mnemonicParsing="false" onAction="#handleEnterUserInfo" text="录入用户信息" />
+                                          <MenuItem fx:id="itemEnterPaperInfo" mnemonicParsing="false" onAction="#handleEnterPaperInfo" text="录入新报刊" />
+                                       </items>
+                                    </Menu>
+                                    <Menu mnemonicParsing="false" text="查询基本信息">
+                                       <items>
+                                          <MenuItem fx:id="itemQueryInfoByPerson" mnemonicParsing="false" onAction="#handleQueryInfoByPerson" text="按人员查询" />
+                                          <MenuItem fx:id="itemQueryInfoByPaper" mnemonicParsing="false" onAction="#handleQueryInfoByPaper" text="按报刊查询" />
+                                          <MenuItem fx:id="itemQueryInfoByDept" mnemonicParsing="false" onAction="#handleQueryInfoByDept" text="按部门查询" />
+                                       </items>
+                                    </Menu>
+                                    <Menu mnemonicParsing="false" text="查询订阅情况">
+                                      <items>
+                                        <MenuItem fx:id="itemQuerySubScriptedByUser" mnemonicParsing="false" onAction="#handleQuerySubScriptedByUser" text="按用户查询" />
+                                          <MenuItem fx:id="itemQuerySubScriptedByPaper" mnemonicParsing="false" onAction="#handleQuerySubScriptedByPaper" text="按报刊查询" />
+                                          <MenuItem fx:id="itemQuerySubScriptedByDept" mnemonicParsing="false" onAction="#handleQuerySubScriptedByDept" text="按部门查询" />
+                                      </items>
+                                    </Menu>
+                                 </menus>
+                              </MenuBar>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="724.0" prefWidth="1218.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <VBox prefHeight="725.0" prefWidth="42.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <HBox prefHeight="724.0" prefWidth="86.0">
+                                       <children>
+                                          <ScrollPane prefHeight="607.0" prefWidth="288.0">
+                                             <content>
+                                                <ListView fx:id="listView" prefHeight="732.0" prefWidth="285.0" />
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="635.0" prefWidth="502.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <HBox prefHeight="556.0" prefWidth="891.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <AnchorPane prefHeight="635.0" prefWidth="599.0">
+                                             <children>
+                                                <Label layoutX="172.0" layoutY="29.0" prefHeight="37.0" prefWidth="85.0" text="用户ID:">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="labelUserId" layoutX="263.0" layoutY="29.0" prefHeight="37.0" prefWidth="334.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="186.0" layoutY="87.0" text="姓名：">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="labelUserName" layoutX="258.0" layoutY="85.0" prefHeight="37.0" prefWidth="334.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="144.0" layoutY="136.0" text="身份证号：">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="labelIDCard" layoutX="264.0" layoutY="136.0" prefHeight="32.0" prefWidth="327.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="168.0" layoutY="184.0" text="手机号：">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="labelPhone" layoutX="264.0" layoutY="184.0" prefHeight="32.0" prefWidth="327.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="192.0" layoutY="227.0" text="地址：">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="labelAddress" layoutX="264.0" layoutY="227.0" prefHeight="32.0" prefWidth="327.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="143.0" layoutY="274.0" text="部门编号：">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="labelDeptNo" layoutX="263.0" layoutY="274.0" prefHeight="32.0" prefWidth="334.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children></HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
